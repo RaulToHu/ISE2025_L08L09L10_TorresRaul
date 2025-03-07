@@ -866,20 +866,20 @@ ARM Macro Assembler    Page 14
   436 0000001C                 END
               00000000 
               00000000 
-Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp.sp --apcs=
-interwork --depend=.\debug\startup_stm32f407xx.d -o.\debug\startup_stm32f407xx.
-o -I.\RTE\CMSIS -I.\RTE\Compiler -I.\RTE\Device\STM32F407IGHx -I.\RTE\Network -
-I.\RTE\_Debug -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include -IC:\Kei
-l_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Driver\Include -IC:\Keil_v5\ARM\PACK\ARM\CM
-SIS\5.8.0\CMSIS\RTOS2\Include -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\RTOS2
-\RTX\Include -IC:\Keil_v5\ARM\PACK\Keil\ARM_Compiler\1.6.3\Include -IC:\Keil_v5
-\ARM\PACK\Keil\MDK-Middleware\7.13.0\Board -IC:\Keil_v5\ARM\PACK\Keil\MDK-Middl
-eware\7.13.0\Network\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Dr
-ivers\CMSIS\Device\ST\STM32F4xx\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DF
-P\2.15.0\Drivers\STM32F4xx_HAL_Driver\Inc --predefine="__RTX SETA 1" --predefin
-e="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 534" --predefine="_RT
-E_ SETA 1" --predefine="STM32F407xx SETA 1" --predefine="_RTE_ SETA 1" --list=.
-\debug\startup_stm32f407xx.lst RTE\Device\STM32F407IGHx\startup_stm32f407xx.s
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4 --apcs=interw
+ork --depend=.\debug\startup_stm32f407xx.d -o.\debug\startup_stm32f407xx.o -I.\
+RTE\CMSIS -I.\RTE\Compiler -I.\RTE\Device\STM32F407IGHx -I.\RTE\Network -I.\RTE
+\_Debug -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include -IC:\Keil_v5\A
+RM\PACK\ARM\CMSIS\5.8.0\CMSIS\Driver\Include -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.
+8.0\CMSIS\RTOS2\Include -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\RTOS2\RTX\I
+nclude -IC:\Keil_v5\ARM\PACK\Keil\ARM_Compiler\1.6.3\Include -IC:\Keil_v5\ARM\P
+ACK\Keil\MDK-Middleware\7.13.0\Board -IC:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\
+7.13.0\Network\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\
+CMSIS\Device\ST\STM32F4xx\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15
+.0\Drivers\STM32F4xx_HAL_Driver\Inc --predefine="__RTX SETA 1" --predefine="__M
+ICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 534" --predefine="_RTE_ SET
+A 1" --predefine="STM32F407xx SETA 1" --predefine="_RTE_ SETA 1" --list=.\debug
+\startup_stm32f407xx.lst RTE\Device\STM32F407IGHx\startup_stm32f407xx.s
 
 
 
@@ -1964,4 +1964,4 @@ Symbol: __main
       At line 190 in file RTE\Device\STM32F407IGHx\startup_stm32f407xx.s
 Comment: __main used once
 2 symbols
-446 symbols in table
+445 symbols in table
