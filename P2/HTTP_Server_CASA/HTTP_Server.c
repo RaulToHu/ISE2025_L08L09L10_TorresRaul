@@ -22,6 +22,7 @@ Raúl Torres Huete
 #include "leds.h"                  // ::Board Support:LED
 #include "lcd.h"
 #include "adc.h"
+#include "rtc.h"
 #include "Board_Buttons.h"              // ::Board Support:Buttons
 //#include "Board_ADC.h"                  // ::Board Support:A/D Converter
 #include "Board_GLCD.h"                 // ::Board Support:Graphic LCD
@@ -53,8 +54,8 @@ extern osThreadId_t TID_Led;
 
 static infoLCD infoDisp;
 bool LEDrun;
-char lcd_text[2][20+1] = { "LCD line 1",
-                           "LCD line 2" };
+char lcd_text[2][20+1] = { "10:40:02",
+                           "03/03/2025" };
 
 /* Thread IDs */
 osThreadId_t TID_Display;
@@ -157,6 +158,8 @@ __NO_RETURN void app_main (void *arg) {
   //ADC_Initialize();
 
   netInitialize ();
+  
+  Init_hora();
 
   TID_Led     = osThreadNew (BlinkLed, NULL, NULL);
   TID_Display = osThreadNew (Display,  NULL, NULL);

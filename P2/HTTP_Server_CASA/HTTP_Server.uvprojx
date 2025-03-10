@@ -10,7 +10,7 @@
       <TargetName>Debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
+      <pCCUsed>5060960::V5.06 update 7 (build 960)::ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -566,12 +566,12 @@
             <File>
               <FileName>time.cgi</FileName>
               <FileType>9</FileType>
-              <FilePath>..\time.cgi</FilePath>
+              <FilePath>.\Web\time.cgi</FilePath>
             </File>
             <File>
               <FileName>time.cgx</FileName>
               <FileType>9</FileType>
-              <FilePath>..\time.cgx</FilePath>
+              <FilePath>.\Web\time.cgx</FilePath>
             </File>
           </Files>
         </Group>
@@ -1165,12 +1165,12 @@
             <File>
               <FileName>time.cgi</FileName>
               <FileType>9</FileType>
-              <FilePath>..\time.cgi</FilePath>
+              <FilePath>.\Web\time.cgi</FilePath>
             </File>
             <File>
               <FileName>time.cgx</FileName>
               <FileType>9</FileType>
-              <FilePath>..\time.cgx</FilePath>
+              <FilePath>.\Web\time.cgx</FilePath>
             </File>
           </Files>
         </Group>

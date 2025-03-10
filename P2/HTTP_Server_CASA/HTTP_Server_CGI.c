@@ -21,6 +21,8 @@ Raúl Torres Huete
 #include "leds.h"                  // ::Board Support:LED
 #include "lcd.h"
 #include "adc.h"
+#include "rtc.h"
+
 
 #if      defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
 #pragma  clang diagnostic push
@@ -210,6 +212,9 @@ uint32_t netCGI_Script (const char *env, char *buf, uint32_t buflen, uint32_t *p
   static uint32_t adv;
   netIF_Option opt = netIF_OptionMAC_Address;
   int16_t      typ = 0;
+  
+  uint8_t lcd_hora[20+1];
+  uint8_t lcd_fecha[20+1];
 
   switch (env[0]) {
     // Analyze a 'c' script line starting position 2
@@ -384,6 +389,20 @@ uint32_t netCGI_Script (const char *env, char *buf, uint32_t buflen, uint32_t *p
           break;
       }
       break;
+      
+    case 'h':
+      // AD Input from 'time.cgi'
+      switch (env[2]) {
+        case '1':
+          RTC_Show(lcd_hora, lcd_fecha);
+          len = (uint32_t)sprintf (buf, &env[4], lcd_hora);
+          break;
+        case '2':
+          RTC_Show(lcd_hora, lcd_fecha);
+          len = (uint32_t)sprintf (buf, &env[4], lcd_fecha);
+          break;
+      }
+      break;
 
     case 'x':
       // AD Input from 'ad.cgx'
@@ -395,6 +414,20 @@ uint32_t netCGI_Script (const char *env, char *buf, uint32_t buflen, uint32_t *p
       // Button state from 'button.cgx'
       len = (uint32_t)sprintf (buf, "<checkbox><id>button%c</id><on>%s</on></checkbox>",
                                env[1], (get_button () & (1 << (env[1]-'0'))) ? "true" : "false");
+      break;
+    
+    case 'z':
+      // Button state from 'time.cgx'
+      switch (env[2]) {
+        case '1':
+          RTC_Show(lcd_hora, lcd_fecha);
+          len = (uint32_t)sprintf (buf, &env[4], lcd_hora);
+          break;
+        case '2':
+          RTC_Show(lcd_hora, lcd_fecha);
+          len = (uint32_t)sprintf (buf, &env[4], lcd_fecha);
+          break;
+      }
       break;
   }
   return (len);

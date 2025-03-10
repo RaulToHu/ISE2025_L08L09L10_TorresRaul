@@ -7,6 +7,7 @@ Raúl Torres Huete
 #include "rtc.h"
 
 osMessageQueueId_t mid_MsgQueueRTC; // id de la cola
+osThreadId_t tid_thRTC;                        // RTC id
 
 RTC_HandleTypeDef rtc_Handler;
 RTC_TimeTypeDef rtc_TimeConfig = {0};
@@ -20,6 +21,8 @@ uint8_t errPeriferico = 0;
 uint8_t errQueue = 0;
 
 tipoDate infoDate;
+
+void ThRTC(void *argument);                   // Thdisplay function
 
 volatile bool alarm_Check = false;
 
@@ -70,6 +73,35 @@ void RTC_Init (void){
 }
 
 
+int Init_hora (void) {
+  
+	//Creamos e iniciamos un nuevo hilo que asignamos al identificador del Thled1,
+  tid_thRTC = osThreadNew(ThRTC, NULL, NULL);
+  if (tid_thRTC == NULL) {
+    return(-1);
+  }
+ 
+  return(0);
+}
+
+void ThRTC (void *argument) {
+  
+  uint8_t dia, mes, ano, diaSemana, hora, minuto, segundo;
+  
+  RTC_Init();
+  init_LSE_Clock();
+  RTC_SetAlarm();
+  RTC_Date_Config (dia, mes, ano, diaSemana);
+  RTC_Time_Config (hora, minuto, segundo);
+
+  
+  while (1) {
+    
+			osThreadYield();                            // suspend ThLCD
+  }
+}
+
+
 /**
   * @brief  Función que configura la fecha
   * @param  Dia, Mes, Año
@@ -79,9 +111,9 @@ void RTC_Date_Config (uint8_t dd, uint8_t ms, uint8_t yr, uint8_t wday){
   
   /*##-2- Configure the Date #################################################*/
   /* Set Date: Sunday March 02nd 2025 */
-  rtc_DateConfig.Date = dd;
-  rtc_DateConfig.Month = ms;
-  rtc_DateConfig.Year = yr; 
+  rtc_DateConfig.Date = 0x01;
+  rtc_DateConfig.Month = 0x01;
+  rtc_DateConfig.Year = 0x00; 
   rtc_DateConfig.WeekDay = RTC_WEEKDAY_FRIDAY;
   
   if(HAL_RTC_SetDate(&rtc_Handler,&rtc_DateConfig,RTC_FORMAT_BCD) != HAL_OK)
@@ -116,10 +148,10 @@ void RTC_Show(uint8_t *showtime, uint8_t *showdate){
 void RTC_Time_Config (uint8_t hh, uint8_t mm, uint8_t ss){
   
   /*##-1- Configure the Time #################################################*/
-  /* Set Time: 20:24:58 */
-  rtc_TimeConfig.Hours = hh;
-  rtc_TimeConfig.Minutes = mm;
-  rtc_TimeConfig.Seconds = ss;
+  /* Set Time: 18:24:02 */
+  rtc_TimeConfig.Hours = 0x00;
+  rtc_TimeConfig.Minutes = 0x00;
+  rtc_TimeConfig.Seconds = 0x00;
   rtc_TimeConfig.TimeFormat = RTC_HOURFORMAT_24;
   rtc_TimeConfig.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   rtc_TimeConfig.StoreOperation = RTC_STOREOPERATION_RESET;

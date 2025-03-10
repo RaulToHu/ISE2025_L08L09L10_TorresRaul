@@ -19,18 +19,18 @@ t }
 t </script></head>
 i pg_header.inc
 t <h2 align=center><br>Hora Actual</h2>
-t <p><font size="2">En esta pestaña se muestra la hora configurada por el usuario. Este módulo
-t se ha realizado empleando el reloj <b>LSE</b> del periférico <b>RTC</b> de la tarjeta.</p>
+t <p><font size="2">En esta pestania se muestra la hora configurada por el usuario. Este modulo
+t se ha realizado empleando el reloj <b>LSE</b> del periferico <b>RTC</b> de la tarjeta.</p>
 t <form action="time.cgi" method="post" name="cgi">
 t <input type="hidden" value="rtc" name="pg">
 t <table border=0 width=99%><font size="3">
-t <tr bgcolor=#f19f10>
+t <tr bgcolor=#8c71e9>
 t  <th width=40%> Valor a representar </th>
 t  <th width=40%> Dato a representar</th></tr>
 # Here begin data setting which is formatted in HTTP_CGI.C module
-t <tr><td><img src=pabb.gif>Hora del Sistema:</td>
-c h 1 <td><input type=text name=rtc1 id="hora_rtc" size=20 maxlength=20 value="%s"></td></tr>
-t <tr><td><img src=pabb.gif>Fecha del Sistema:</TD>
+t <tr><td><img src=pabb.gif>  Hora:  </td>
+c h 1 <td><input type=text name=rtc1 id="time_rtc" size=20 maxlength=20 value="%s"></td></tr>
+t <tr><td><img src=pabb.gif>  Fecha:  </TD>
 c h 2 <td><input type=text name=rtc2 id="fecha_rtc" size=20 maxlength=20 value="%s"></td></tr>
 t </font></table>
 # Here begin button definitions

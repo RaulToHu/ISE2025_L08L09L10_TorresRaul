@@ -17,6 +17,6 @@ keil.gif,
 logo.gif,
 llblue.jpg,
 pabb.gif,
-..\..\time.cgi,
-..\..\time.cgx 
+time.cgi,
+time.cgx 
 TO Web.c RTE NOPRINT ROOT(Web)
