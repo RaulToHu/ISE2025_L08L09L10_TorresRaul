@@ -1,5 +1,5 @@
 /**
-ISE - P1
+ISE - P2
 Raúl Torres Huete
 (LunesTarde)
   */
@@ -7,7 +7,6 @@ Raúl Torres Huete
 #ifndef LCD_H
 
 #include "cmsis_os2.h"
-
 #include "RTE_Components.h"
 #include <stdint.h>
 #include "Driver_SPI.h"
@@ -19,32 +18,31 @@ Raúl Torres Huete
   	
 		int Init_display (void);
 
-		void initRESET(void);
-		void initCS(void);
-		void initA0(void);
-		void delay(volatile uint32_t n_microsegundos);
-		void LCD_reset(void);
-		void LCD_wr_data(unsigned char data);
-		void LCD_wr_cmd(unsigned char cmd);
-		void LCD_init(void);
-		void LCD_update(void);
-		void LCD_symbolToLocalBuffer(uint8_t line,uint8_t symbol, uint8_t reset, uint16_t posicionL);
-		void LCD_modificarByteBuffer(uint8_t pos, uint8_t page, char byte);
-    void vaciarLCD(void);
-    void PINS_reset(void);
-    uint8_t LCD_buscar(char text[], uint8_t sel);
-    uint8_t LCD_centrar(char text[]);
-    void LCD_escribirNormal(uint8_t column, uint8_t page, uint8_t value);
-
-
-  extern osMessageQueueId_t IdqueueLCD;
-
+		void initRESET(void);																// pin reset spi
+		void initCS(void);																	// pin CS spi
+		void initA0(void);																	// pin A0 spi
 		
-		void clk_enable(void);
+		void delay(volatile uint32_t n_microsegundos);			// delay lcd
+		void LCD_reset(void);																// reset lcd
+		void LCD_wr_data(unsigned char data);								// escribe dato lcd		 		(dada SBM)
+		void LCD_wr_cmd(unsigned char cmd);									// escribe comando lcd 		(dada SBM)
+		void LCD_init(void);																// inicializa lcd					(dada SBM)
+		void LCD_update(void);															// refresca pantalla lcd	(dada SBM)
 		
-		extern ARM_DRIVER_SPI Driver_SPI1; //driver del protocolo SPI
+		void LCD_symbolToLocalBuffer(uint8_t line,uint8_t symbol, uint8_t reset, uint16_t posicionL);		
+    uint8_t LCD_buscar(char text[], uint8_t sel);																										// busca un caracter
+    uint8_t LCD_centrar(char text[]);																																// centra el texto 
 		
-		typedef struct{ //Estructura de un gpio para mayor comodidad
+    void vaciarLCD(void);																// vacía el buffer del lcd
+		void clk_enable(void);															// activa todos los enable de los buses
+    void PINS_reset(void);															// resetea pines spi
+		
+    void LCD_escribirNormal(uint8_t column, uint8_t page, uint8_t value);			// escribe en línea y columna indicados
+
+		extern osMessageQueueId_t IdqueueLCD;								// id EXTRERNO cola
+		extern ARM_DRIVER_SPI Driver_SPI1; 								  // driver EXTERNO protocolo SPI
+		
+		typedef struct{						 // estructura de info que procesa la cola
 			uint8_t linea;
 			uint8_t reset;
 			uint8_t select;

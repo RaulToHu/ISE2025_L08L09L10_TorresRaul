@@ -1,39 +1,5 @@
-/*-----------------------------------------------------------------------------
- * Copyright (c) 2013 - 2018 Arm Limited (or its affiliates). All
- * rights reserved.
- *
- * SPDX-License-Identifier: BSD-3-Clause
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *   1.Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *   2.Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *   3.Neither the name of Arm nor the names of its contributors may be used
- *     to endorse or promote products derived from this software without
- *     specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS AND CONTRIBUTORS BE
- * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- *-----------------------------------------------------------------------------
- * Name:    LED_F429Discovery.c
- * Purpose: LED interface for STM32F429 Discovery Kit
- * Rev.:    1.0.1
- *----------------------------------------------------------------------------*/
- 
  /**
-ISE - P1
+ISE - P2
 Raúl Torres Huete
 (LunesTarde)
   */
@@ -50,12 +16,12 @@ typedef struct _GPIO_PIN {
 
 /* LED GPIO Pins */
 static const GPIO_PIN LED_PIN[] = {
-  { GPIOB, GPIO_PIN_0, 0U },
-  { GPIOB, GPIO_PIN_7, 0U },
-	{ GPIOB, GPIO_PIN_14, 0U }
+  { GPIOB, GPIO_PIN_0, 0U },			// LD1 en la STM32 (verde)
+  { GPIOB, GPIO_PIN_7, 0U },			// LD2 en la STM32 (azul)
+	{ GPIOB, GPIO_PIN_14, 0U }			// LD3 en la STM32 (rojo)
 };
 
-#define LED_COUNT (sizeof(LED_PIN)/sizeof(GPIO_PIN))
+#define LED_COUNT (sizeof(LED_PIN)/sizeof(GPIO_PIN))  // cuenta los leds establecidos en LED_PIN[]
 
 
 /**
@@ -65,6 +31,7 @@ static const GPIO_PIN LED_PIN[] = {
    - \b  0: function succeeded
    - \b -1: function failed
 */
+//Función que inicializa los leds
 int32_t LED_Initialize (void) {
   GPIO_InitTypeDef GPIO_InitStruct;
 
@@ -88,6 +55,7 @@ int32_t LED_Initialize (void) {
    - \b  0: function succeeded
    - \b -1: function failed
 */
+//Función que desinicializa los leds
 int32_t LED_Uninitialize (void) {
 
   HAL_GPIO_DeInit(GPIOB, GPIO_PIN_0 | GPIO_PIN_7 | GPIO_PIN_14);
@@ -103,6 +71,7 @@ int32_t LED_Uninitialize (void) {
    - \b  0: function succeeded
    - \b -1: function failed
 */
+//Función que enciende el led pasado como parámetro
 int32_t LED_On (uint32_t num) {
   int32_t retCode = 0;
 
@@ -124,6 +93,7 @@ int32_t LED_On (uint32_t num) {
    - \b  0: function succeeded
    - \b -1: function failed
 */
+//Función que apaga el led pasado como parámetro
 int32_t LED_Off (uint32_t num) {
   int32_t retCode = 0;
 
@@ -161,6 +131,7 @@ int32_t LED_SetOut (uint32_t val) {
   \brief       Get number of LEDs
   \return      Number of available LEDs
 */
+//Función que devuelve el número de leds
 uint32_t LED_GetCount (void) {
 
   return LED_COUNT;

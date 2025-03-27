@@ -44,7 +44,6 @@ void RTC_Init (void);
 void RTC_Time_Config (uint8_t hh, uint8_t mm, uint8_t ss);
 void RTC_Date_Config (uint8_t dd, uint8_t ms, uint8_t yr, uint8_t wday);
 void RTC_Show(uint8_t *showtime, uint8_t *showdate);
-static void init_LSE_Clock (void);
 void RTC_SetAlarm (void);
 
 #endif /* __RTC_H */

@@ -40,17 +40,17 @@
 //     <s.15>IP Address
 //     <i>Static IPv4 Address in text representation
 //     <i>Default: "192.168.0.100"
-#define ETH0_IP4_ADDR           "10.48.11.191"
+#define ETH0_IP4_ADDR           "192.168.0.191"
 
 //     <s.15>Subnet mask
 //     <i>Local Subnet mask in text representation
 //     <i>Default: "255.255.255.0"
-#define ETH0_IP4_MASK           "255.254.0.0"
+#define ETH0_IP4_MASK           "255.255.255.0"
 
 //     <s.15>Default Gateway
 //     <i>IP Address of Default Gateway in text representation
 //     <i>Default: "192.168.0.254"
-#define ETH0_IP4_GATEWAY        "10.48.0.1"
+#define ETH0_IP4_GATEWAY        "192.168.0.1"
 
 //     <s.15>Primary DNS Server
 //     <i>IP Address of Primary DNS Server in text representation
@@ -66,7 +66,7 @@
 //     <i>This option enables fragmentation of outgoing IP datagrams,
 //     <i>and reassembling the fragments of incoming IP datagrams.
 //     <i>Default: enabled
-#define ETH0_IP4_FRAG_ENABLE    1
+#define ETH0_IP4_FRAG_ENABLE    0
 
 //       <o>MTU size <576-1500>
 //       <i>Maximum Transmission Unit in bytes
